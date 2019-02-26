@@ -6,18 +6,39 @@ public class KnightBoard {
   }
 
   public String toString() {
-    String board = "";
+    String str = "";
     for (r = 0; r < board.length; r++) {
       for (c = 0; c < board[r].length; c++) {
         if (board[r][c] == 0) {
-          board += "_ ";
+          str += "_ ";
+        } else if (board[r][c] / 10 == 0) {
+          str += " " + board[r][c] + " ";
         } else {
-          if (board[r][c] / 10 == 0) {
-            board += " ";
-          }
-          board += "";
+          str += board[r][c] + " ";
+        }
+      }
+      str += "\n";
+    }
+    return str;
+  }
+
+  public boolean solve(int startingRow, int startingCol) {
+    if (startingRow < 0 || startingCol < 0 || startingRow >= board.length || startingCol >= board[0].length) {
+      throw new IllegalArgumentException();
+    }
+    for (r = 0; r < board.length; r++) {
+      for (c = 0; c < board[r].length; c++) {
+        if (board[r][c] == 0) {
+          throw new IllegalStateException();
         }
       }
     }
+    solveH(startingRow, startingCol, 1);
+  }
+  public boolean solveH(int startingRow, startingCol, int moveNumber) {
+    if (moveNumber > startingRow * startingCol) {
+      return true;
+    }
+
   }
 }
