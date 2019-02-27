@@ -1,6 +1,6 @@
 public class KnightBoard {
   int[][] board;
-  int movement[] = {1, -2, 2, -1, 2, 1, 1, 2, -1, 2, -2, 1, -1, -2, -2, -1};
+  int movement[] = {1, -2, 2, -1, 2, 1, 1, 2, -1, 2, -2, 1, -1, -2, -2, -1}; //list of all moves
 
   public KnightBoard(int startingRows, int startingCols) {
     board = new int[startingRows][startingCols];
@@ -48,11 +48,11 @@ public class KnightBoard {
     for (int i = 0; i < 16; i+=2) {
       if (startingRow+movement[i] >= 0 && startingRow+movement[i] < board.length &&
       startingCol+movement[i+1] >= 0 && startingCol+movement[i+1] < board[0].length &&
-      board[startingRow+movement[i]][startingCol+movement[i+1]] == 0) {
+      board[startingRow+movement[i]][startingCol+movement[i+1]] == 0) { //checks to see if there are any open spaces
         if (solveH(startingRow+movement[i], startingCol+movement[i+1], moveNumber+1)) {
           return true;
         }
-        board[startingRow+movement[i]][startingCol+movement[i+1]] = 0;
+        board[startingRow+movement[i]][startingCol+movement[i+1]] = 0; //when there are no possible moves, backtrack
       }
     }
     return false;
@@ -81,7 +81,7 @@ public class KnightBoard {
       if (startingRow+movement[i] >= 0 && startingRow+movement[i] < board.length &&
       startingCol+movement[i+1] >= 0 && startingCol+movement[i+1] < board[0].length &&
       board[startingRow+movement[i]][startingCol+movement[i+1]] == 0) {
-        sols += countSolutionsH(startingRow+movement[i], startingCol+movement[i+1], moveNumber+1);      
+        sols += countSolutionsH(startingRow+movement[i], startingCol+movement[i+1], moveNumber+1);
         board[startingRow+movement[i]][startingCol+movement[i+1]] = 0;
       }
     }
