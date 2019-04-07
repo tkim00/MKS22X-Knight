@@ -1,6 +1,7 @@
 public class KnightBoard {
   int[][] board;
-  int movement[] = {1, -2, 2, -1, 2, 1, 1, 2, -1, 2, -2, 1, -1, -2, -2, -1}; //list of all moves
+  int movement[] = {-2, 1, -1, 2, 1, 2, 2, 1, 2, -1, 1, -2, -1, -2, -2, -1}; //list of all moves
+  //int movement[] = {1, 2, 2, 1, 2, -1, 1, -2, -1, -2, -2, -1, -2, 1, -1, 2};
 
   public KnightBoard(int startingRows, int startingCols) {
     board = new int[startingRows][startingCols];
@@ -42,6 +43,7 @@ public class KnightBoard {
   }
   public boolean solveH(int startingRow, int startingCol, int moveNumber) {
     board[startingRow][startingCol] = moveNumber;
+    System.out.println(moveNumber);
     if (moveNumber == board.length * board[0].length) {
       return true;
     }
